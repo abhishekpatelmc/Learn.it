@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import AudioAnalyser from "react-audio-analyser";
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+
+import { storage } from '../utils/firebase';
 
 export default class Recorder extends Component {
   constructor(props) {
     super(props);
     this.state = {
       status: "",
-      submitVisible: false
+      submitVisible: false,
+      progress: 0
     };
   }
 
@@ -26,6 +30,26 @@ export default class Recorder extends Component {
     this.setState({
       audioType: "audio/wav",
     });
+  }
+
+  uploadFile(file) {
+    if(!file) return;
+
+    const storageRef = ref(storage, `/audio/${file.size}`);
+
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on("state_changed", (snapshot) => {
+      const prog = Math.round((snapshot.bytesTransferred/ snapshot.totalBytes) * 100);  
+      this.setState({
+        progress: prog
+      });
+    }, (err) => console.log(err),
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref)
+        .then(url=> console.log(url))
+      }
+    )
   }
 
   render() {
@@ -51,6 +75,7 @@ export default class Recorder extends Component {
           submitVisible: true
         });
         console.log("succ stop", e);
+        this.uploadFile(e);
 
       },
       onRecordCallback: (e) => {
@@ -95,9 +120,7 @@ export default class Recorder extends Component {
           <option value="audio/webm">audio/webm</option>
           <option value="audio/mp3">audio/mp3</option>
         </select>
-        <div>
-          {this.submitVisible? <h3>Hello!</h3>: ""}
-        </div>
+        <h3>Uploaded {this.progress}</h3>
       </div>
     );
   }
