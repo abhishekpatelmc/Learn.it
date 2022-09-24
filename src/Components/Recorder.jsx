@@ -6,6 +6,7 @@ export default class Recorder extends Component {
     super(props);
     this.state = {
       status: "",
+      submitVisible: false
     };
   }
 
@@ -37,6 +38,9 @@ export default class Recorder extends Component {
       timeslice: 1000, // timeslice（https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/start#Parameters）
       startCallback: (e) => {
         console.log("succ start", e);
+        this.setState({
+          submitVisible: false,
+        })
       },
       pauseCallback: (e) => {
         console.log("succ pause", e);
@@ -44,8 +48,10 @@ export default class Recorder extends Component {
       stopCallback: (e) => {
         this.setState({
           audioSrc: window.URL.createObjectURL(e),
+          submitVisible: true
         });
         console.log("succ stop", e);
+
       },
       onRecordCallback: (e) => {
         console.log("recording", e);
@@ -69,7 +75,7 @@ export default class Recorder extends Component {
             </button>
             <button
               className="btn"
-              onClick={() => this.controlAudio("inactive")}
+              onClick={() => { this.controlAudio("inactive")}}
             >
               Stop
             </button>
@@ -85,10 +91,13 @@ export default class Recorder extends Component {
           onChange={(e) => this.changeScheme(e)}
           value={audioType}
         >
-          <option value="audio/webm">audio/webm（default）</option>
-          <option value="audio/wav">audio/wav</option>
+          <option value="audio/wav">audio/wav（default）</option>
+          <option value="audio/webm">audio/webm</option>
           <option value="audio/mp3">audio/mp3</option>
         </select>
+        <div>
+          {this.submitVisible? <h3>Hello!</h3>: ""}
+        </div>
       </div>
     );
   }
