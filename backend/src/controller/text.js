@@ -1,7 +1,23 @@
-function textController(req, res) {
+const { firebaseApp } = require("../util/firebase");
+const { FirebaseStorage } = require("../util/firebaseStorage");
+const { FileDownloader } = require("../util/fileDownloader");
+const download = require("download");
+
+async function textController(req, res) {
   const referenceText = req.body.referenceText;
-  const audioFileId = req.body.fileId;
-  console.log(referenceText, audioFileId);
+  const audioFileName = req.body.fileId;
+  console.log(referenceText, audioFileName);
+
+  //TODO Add Azure Api
+  // const storage = new FirebaseStorage(firebaseApp);
+  // const fileName = "322604";
+  // const bucketLocation = process.env.FIREBASE_DOWNLOAD_PATH;
+  // const url = await storage.retrieveDownloadUrl(`${bucketLocation}${fileName}`);
+  // console.log(url);
+  // const filePath = `${__dirname}/audioFiles`;
+  // const fileDownloader = new FileDownloader(download);
+  // await fileDownloader.downloadFile(url, filePath);
+
   const dummyString = `{
       "Id": "bbb42ea51bdb46d19a1d685e635fe173",
       "RecognitionStatus": 0,
