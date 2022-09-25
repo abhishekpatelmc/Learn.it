@@ -12,14 +12,27 @@ Download or clone this repo by using the link below:
 https://github.com/abhishekpatelmc/learnit
 ```
 
-**Installation**
+**Backend Installation**
 
 ```
+cd backend
 npm install
 ```
 
-**To Start Server:**
+**Start Backend Server:**
 
+```
+npm start
+```
+
+**Frontend Installation**
+
+```
+cd learnit
+npm install
+```
+
+**Frontend Installation**
 ```
 npm start
 ```
@@ -27,7 +40,7 @@ npm start
 **To Vist the App:**
 
 ```
-http://localhost:3000
+http://localhost:3001
 ```
 
 ## Website Features:
