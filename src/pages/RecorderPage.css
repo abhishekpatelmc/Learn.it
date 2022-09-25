@@ -23,3 +23,15 @@
   border: none;
   border-radius: 1px;
 }
+
+.textArea {
+  width: 50rem;
+  height: 10rem;
+  font-size: large;
+  padding: 1rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
