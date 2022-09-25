@@ -7,17 +7,15 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 const cardLayout = (props) => {
-  const value = props.result?.privPronJson?.Words;
-  console.log(value);
+  const cards = props.result.privPronJson.Words;
+  console.log(cards);
   return (
     <div>
       <Container sx={{ py: 8 }} maxWidth="md">
         {/* End hero unit */}
         <Grid container spacing={4}>
-          {cards.map((card) => (
+          {cards.map((card, index) => (
             <Grid item key={card} xs={12} sm={6} md={4}>
               <Card
                 sx={{
@@ -28,9 +26,14 @@ const cardLayout = (props) => {
               >
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Word
+                    {props.result.privPronJson.Words[index].Word}
                   </Typography>
-                  <Typography>Accuracy</Typography>
+                  <Typography>
+                    {
+                      props.result.privPronJson.Words[index]
+                        .PronunciationAssessment.AccuracyScore
+                    }
+                  </Typography>
                 </CardContent>
                 <CardActions>
                   <Button size="small">Listen</Button>

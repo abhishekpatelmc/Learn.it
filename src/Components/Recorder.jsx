@@ -51,6 +51,8 @@ export default class Recorder extends Component {
     console.log(fileName, text);
     const data = await pronounciationService(fileName, text);
     this.setState({ resultData: data });
+    this.setState({ isRender: true });
+
     // console.log(data);
     console.log(this.state.resultData);
   }
@@ -116,6 +118,11 @@ export default class Recorder extends Component {
         console.log("error", err);
       },
     };
+    let cards = null;
+    if (this.state.isRender) {
+      console.log("YES_TRUE");
+      cards = <CardLayout result={this.state.resultData} />;
+    }
     return (
       <div>
         <div className="recorder-container">
@@ -202,9 +209,7 @@ export default class Recorder extends Component {
             </div>
           ) : null}
         </div>
-        {this.state.isRendered ? (
-          <CardLayout result={this.state.resultData} />
-        ) : null}
+        {cards}
       </div>
     );
   }
