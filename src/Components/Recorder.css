@@ -1,0 +1,29 @@
+.progress-wrapper {
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  width: 20rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-wrapper {
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.recorder-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.progress-bar {
+  width: 20rem;
+}
+
+.scoreCard {
+  font-size: 0.8rem;
+  margin-top: 1.5rem;
+}
