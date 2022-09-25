@@ -59,7 +59,7 @@ Happy to answer any questions
 
 ## Connect with Developers
 
+- [Jafer Ahmed](https://github.com/ojafero)
 - [Abhishek Patel](https://www.linkedin.com/in/abhishekpatelmc/)
 - [Kevin Jacob](https://www.linkedin.com/in/kevin-jacob-7086a6134/)
-- [Jafer Ahmed](https://github.com/ojafero)
 - [Meenal Jain](https://www.linkedin.com/in/meenaljain21/)
