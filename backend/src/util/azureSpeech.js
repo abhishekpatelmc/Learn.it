@@ -23,12 +23,14 @@ class AzureSpeech {
     pronunciationAssessmentConfig.applyTo(this.speechRecognizer);
     return new Promise((resolve, reject) => {
       this.speechRecognizer.recognizeOnceAsync((speechRecognitionResult) => {
-        var pronunciationAssessmentResultJsonString =
-          speechRecognitionResult.properties.getProperty(
-            sdk.PropertyId.SpeechServiceResponse_JsonResult
-          );
-        var result = JSON.parse(pronunciationAssessmentResultJsonString);
-        resolve(result);
+        // var pronunciationAssessmentResultJsonString =
+        //   speechRecognitionResult.properties.getProperty(
+        //     sdk.PropertyId.SpeechServiceResponse_JsonResult
+        //   );
+        // var result = JSON.parse(pronunciationAssessmentResultJsonString);
+        var pronunciationAssessmentResult =
+          sdk.PronunciationAssessmentResult.fromResult(speechRecognitionResult);
+        resolve(pronunciationAssessmentResult);
         this.speechRecognizer.close();
       });
     });
