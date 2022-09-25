@@ -61,5 +61,5 @@ Happy to answer any questions
 
 - [Abhishek Patel](https://www.linkedin.com/in/abhishekpatelmc/)
 - [Kevin Jacob](https://www.linkedin.com/in/kevin-jacob-7086a6134/)
-- [Jafer Ahmed]
-- [Meenal Jain]
+- [Jafer Ahmed](https://github.com/ojafero)
+- [Meenal Jain](https://www.linkedin.com/in/meenaljain21/)
