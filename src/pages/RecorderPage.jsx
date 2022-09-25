@@ -1,25 +1,22 @@
 import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
+
 import TextField from "@mui/material/TextField";
 import CssBaseline from "@mui/material/CssBaseline";
-import Grid from "@mui/material/Grid";
+
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Colors from "../utils/Colors";
 import Recorder from "../Components/Recorder";
 import "./RecorderPage.css";
 
 import { quotesData } from "../data.js";
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 const theme = createTheme({
   status: {
     danger: "#e53e3e",
@@ -126,32 +123,6 @@ const RecorderPage = () => {
               <Recorder textValue={textAreaValue} />
             </Container>
           </Box>
-          <Container sx={{ py: 8 }} maxWidth="md">
-            {/* End hero unit */}
-            <Grid container spacing={4}>
-              {cards.map((card) => (
-                <Grid item key={card} xs={12} sm={6} md={4}>
-                  <Card
-                    sx={{
-                      height: "100%",
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
-                  >
-                    <CardContent sx={{ flexGrow: 1 }}>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        Word
-                      </Typography>
-                      <Typography>Accuracy</Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button size="small">Listen</Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
         </div>
         <Box
           sx={{

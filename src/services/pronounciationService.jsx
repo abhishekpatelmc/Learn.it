@@ -19,7 +19,8 @@ async function pronounciationService(fileName, text) {
       }),
     });
     const content = await rawResponse.json();
-    console.log(content);
+    // console.log(content);
+    return content;
   } catch (error) {
     console.log(error);
   }
