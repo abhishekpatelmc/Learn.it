@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const cardLayout = (props) => {
-  const value = props;
+  const value = props.result;
   console.log(value);
   return (
     <div>

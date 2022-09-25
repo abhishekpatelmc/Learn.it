@@ -7,7 +7,6 @@ import { storage } from "../utils/firebase";
 import pronounciationService from "../services/pronounciationService";
 import CardLayout from "./../Components/cardLayout";
 
-var result = {};
 export default class Recorder extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +17,8 @@ export default class Recorder extends Component {
       audioType: "audio/wav",
       text: this.props.textValue,
       fileName: "",
-      resultData: null,
+      resultData: {},
+      isRendered: false,
     };
   }
 
@@ -48,10 +48,10 @@ export default class Recorder extends Component {
 
     //JSON response is received here
     console.log(fileName, text);
-    result = await pronounciationService(fileName, text);
-    // this.setState({ resultData: data });
-    console.log(result);
-    // console.log(this.state.resultData);
+    const data = await pronounciationService(fileName, text);
+    this.setState({ resultData: data });
+    // console.log(data);
+    console.log(this.state.resultData);
   }
 
   uploadFile(file) {
@@ -73,6 +73,7 @@ export default class Recorder extends Component {
         );
         this.setState({
           progress: prog,
+          isRendered: true,
         });
       },
       (err) => console.log(err),
@@ -155,8 +156,17 @@ export default class Recorder extends Component {
           >
             Submit
           </button>
+
+          <h1>
+            {
+              this.state.resultData?.privPronJson?.PronunciationAssessment
+                ?.AccuracyScore
+            }
+          </h1>
         </div>
-        <CardLayout result={result} />
+        {/* {this.state.isRendered ? (
+          <CardLayout result={this.state.resultData} />
+        ) : null} */}
       </div>
     );
   }
