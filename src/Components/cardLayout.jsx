@@ -6,6 +6,7 @@ import CardActions from "@mui/material/CardActions";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import Speech from "react-speech";
 
 const cardLayout = (props) => {
   const cards = props.result.privPronJson.Words;
@@ -26,7 +27,7 @@ const cardLayout = (props) => {
               >
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    {props.result.privPronJson.Words[index].Word}
+                    {props.result.privPronJson.Words[index].Word || "Omitted"}
                   </Typography>
                   <Typography>
                     {
@@ -36,7 +37,15 @@ const cardLayout = (props) => {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="small">Listen</Button>
+                  <Button size="small">
+                    Listen
+                    <Speech
+                      text={
+                        props.result.privPronJson.Words[index].Word || "Omitted"
+                      }
+                      voice="Daniel"
+                    />
+                  </Button>
                 </CardActions>
               </Card>
             </Grid>
