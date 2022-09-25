@@ -2,7 +2,7 @@
 
 > Enabling students to improve their reading skills without the help of a tutor.
 
-[Devpost](https://hackandwellness2.devpost.com/?ref_feature=challenge&ref_medium=your-open-hackathons&ref_content=Recently+ended)
+[Devpost](https://devpost.com/software/a-yi691o?ref_content=my-projects-tab&ref_feature=my_projects)
 
 ## How to Use
 
