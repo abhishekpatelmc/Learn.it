@@ -7,6 +7,7 @@ import { storage } from "../utils/firebase";
 import pronounciationService from "../services/pronounciationService";
 import Button from "@mui/material/Button";
 import CardLayout from "./../Components/cardLayout";
+import { Stack } from "@mui/material";
 
 export default class Recorder extends Component {
   constructor(props) {
@@ -121,26 +122,35 @@ export default class Recorder extends Component {
         <div className="recorder-container">
           <AudioAnalyser {...audioProps}>
             <div className="btn-box">
-              <button
-                className="btn"
-                onClick={() => this.controlAudio("recording")}
-              >
-                Start
-              </button>
-              <button
-                className="btn"
-                onClick={() => this.controlAudio("paused")}
-              >
-                Pause
-              </button>
-              <button
-                className="btn"
-                onClick={() => {
-                  this.controlAudio("inactive");
-                }}
-              >
-                Stop
-              </button>
+              <Stack direction="row" spacing={2} justifyContent="center">
+                <Button
+                  className="btn"
+                  variant="contained"
+                  sx={{ background: "#0C1821", color: "#fff" }}
+                  onClick={() => this.controlAudio("recording")}
+                >
+                  Start
+                </Button>
+
+                <Button
+                  className="btn"
+                  variant="contained"
+                  sx={{ background: "#0C1821", color: "#fff" }}
+                  onClick={() => this.controlAudio("paused")}
+                >
+                  Pause
+                </Button>
+                <Button
+                  className="btn"
+                  variant="contained"
+                  sx={{ background: "#0C1821", color: "#fff" }}
+                  onClick={() => {
+                    this.controlAudio("inactive");
+                  }}
+                >
+                  Stop
+                </Button>
+              </Stack>
             </div>
           </AudioAnalyser>
           <div className="progress-wrapper">
@@ -153,6 +163,7 @@ export default class Recorder extends Component {
             className="button-wrapper"
             justifyContent="center"
             variant="contained"
+            sx={{ background: "#0C1821", color: "#fff" }}
             onClick={() => {
               this.handleSubmit(this.state.fileName, this.state.text);
             }}

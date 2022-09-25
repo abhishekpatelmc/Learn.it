@@ -12,13 +12,14 @@ function LandingPage() {
     <div className="LandingPage">
       <div className="LandingPage__title">Learn.It</div>
       <div className="LandingPage__description">{description}</div>
-      <Link to="/home">
-        <div className="LandingPage__button">
+
+      <div className="LandingPage__button">
+        <Link to="/home">
           <AwesomeButton type="secondary" color="black">
             Start Today
           </AwesomeButton>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 }

@@ -49,7 +49,7 @@ const RecorderPage = () => {
   return (
     <ThemeProvider theme={theme} sx={{ background: Colors.lightgreen }}>
       <CssBaseline />
-      <AppBar position="relative" sx={{ background: Colors.black }}>
+      <AppBar position="relative" sx={{ background: "#0C1821" }}>
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap marginLeft={10}>
             LearnIt
@@ -94,7 +94,7 @@ const RecorderPage = () => {
                     <span> </span>
                     <Button
                       variant="contained"
-                      sx={{ m: 2 }}
+                      sx={{ m: 2, background: "#0C1821", color: "#fff" }}
                       onClick={generateQuote}
                     >
                       Generate something to Read!
