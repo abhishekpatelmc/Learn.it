@@ -1,23 +1,12 @@
 import React, { Component } from "react";
 import AudioAnalyser from "react-audio-analyser";
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import ProgressBar from "@ramonak/react-progress-bar";
-<<<<<<< HEAD
-import Button from '@mui/material/Button';
-import './Recorder.css'
-import { storage } from '../utils/firebase';
-import pronounciationService from "../services/pronounciationService";
-import Container from '@mui/material/Container';
-import Stack from '@mui/material/Stack';
-
-=======
 import "./Recorder.css";
 import { storage } from "../utils/firebase";
-import Button from "@mui/material/Button";
-
 import pronounciationService from "../services/pronounciationService";
+import Button from "@mui/material/Button";
 import CardLayout from "./../Components/cardLayout";
->>>>>>> 1bd4aef93621b2f6d0ad8835ca46ef127af283d3
 
 export default class Recorder extends Component {
   constructor(props) {
@@ -128,38 +117,6 @@ export default class Recorder extends Component {
       },
     };
     return (
-<<<<<<< HEAD
-      <div className="recorder-container">
-        <AudioAnalyser {...audioProps}>
-          <div className="btn-box">
-          <Stack
-            direction="row"
-            spacing={2}
-            justifyContent="center">
-            <Button color="neutral" variant="contained"
-              className="btn"
-              onClick={() => this.controlAudio("recording")}
-            >
-              Start
-            </Button>
-            <Button color="neutral" variant="contained" className="btn" onClick={() => this.controlAudio("paused")}>
-              Pause
-            </Button>
-            <Button color="neutral" variant="contained"
-              className="btn"
-              onClick={() => { this.controlAudio("inactive")}}
-            >
-              Stop
-            </Button>
-            </Stack>
-          </div>
-        </AudioAnalyser>
-        <Container  align="center" className="progress-wrapper">
-          <ProgressBar completed={this.state.progress} className="progress-bar"/>
-          <Button align = "center" color="neutral" variant="contained" className="btn-primary" onClick={()=>{this.handleSubmit(this.state.fileName, this.state.text)}}>Submit</Button>
-        </Container> 
-        
-=======
       <div>
         <div className="recorder-container">
           <AudioAnalyser {...audioProps}>
@@ -248,7 +205,6 @@ export default class Recorder extends Component {
         {this.state.isRendered ? (
           <CardLayout result={this.state.resultData} />
         ) : null}
->>>>>>> 1bd4aef93621b2f6d0ad8835ca46ef127af283d3
       </div>
     );
   }
