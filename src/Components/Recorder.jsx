@@ -37,6 +37,7 @@ export default class Recorder extends Component {
     });
   }
 
+  //API value is returned here
   handleSubmit(fileName, text) {
     if(!text) {
       throw new Error('No text provided')
