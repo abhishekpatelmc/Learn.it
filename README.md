@@ -32,7 +32,7 @@ cd learnit
 npm install
 ```
 
-**Frontend Installation**
+**Start Frontend Server:**
 ```
 npm start
 ```
