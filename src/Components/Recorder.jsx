@@ -5,6 +5,7 @@ import ProgressBar from "@ramonak/react-progress-bar";
 
 import './Recorder.css'
 import { storage } from '../utils/firebase';
+import pronounciationService from "../services/pronounciationService";
 
 export default class Recorder extends Component {
   constructor(props) {
@@ -45,7 +46,8 @@ export default class Recorder extends Component {
 
     //JSON response is received here
     console.log(fileName, text)
-    //const data = this.pronounciationService(fileName, text);
+    const data = pronounciationService(fileName, text);
+    console.log(data);
 
   }
 
@@ -130,7 +132,7 @@ export default class Recorder extends Component {
         <div className="progress-wrapper">
           <ProgressBar completed={this.state.progress} className="progress-bar"/>
         </div> 
-        <button className="btn-primary" onClick={this.handleSubmit(this.state.fileName, this.state.text)}>Submit</button>
+        <button className="btn-primary" onClick={()=>{this.handleSubmit(this.state.fileName, this.state.text)}}>Submit</button>
       </div>
     );
   }
