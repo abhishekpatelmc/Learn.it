@@ -27,13 +27,17 @@ const theme = createTheme({
     },
     palette: {
       primary: {
-        main: '#0971f1',
+        main: '#6B89DB',
         darker: '#053e85',
       },
       neutral: {
-        main: Colors.darkgreen,
+        main: '#324A5F',
         contrastText: '#fff',
       },
+      yellowBlock:{
+        main: '#ffff00',
+        contrastText:Colors.pitchblack
+      }
     },
     
   });
@@ -50,9 +54,9 @@ const RecorderPage = () => {
   }
 
   return (
-    <ThemeProvider theme={theme} sx={{background: Colors.lightgreen}}>
+    <ThemeProvider  theme={theme} sx={{background: Colors.black, color: "#324A5F"}}>
     <CssBaseline />
-    <AppBar position="relative" sx={{ background: Colors.black }}>
+    <AppBar position="relative" sx={{ background: "#0C1821" }}>
       <Toolbar>
         <Typography variant="h6" color="inherit" noWrap>
           LearnIt
@@ -63,8 +67,9 @@ const RecorderPage = () => {
       {/* Hero unit */}
       <div className="main">
       <Box
+      color= "#0C1821 "
       sx={{
-        background: Colors.lightgreen,
+        background: "#CCC9DC ",
         pt: 8,
         pb: 6,
       }}>
@@ -80,18 +85,18 @@ const RecorderPage = () => {
             </Typography>
         <div className="textContainer">
           <Stack
-          sx={{ pt: 4 }}
-          direction="row"
-          spacing={2}
-          justifyContent="center">
-          <Typography
+            sx={{ pt: 4 }}
+            direction="row"
+            spacing={2}
+            justifyContent="center">
+            <Typography
             component="h6"
             variant="h6"
             align="center"
             color = "inherit"
             gutterBottom>
             1. Copy and paste a piece of text you would like to read or <span> </span>
-            <Button  variant="contained" onClick={generateQuote}>Generate something to Read!</Button>
+            <Button  color="neutral" variant="contained" onClick={generateQuote}>Generate something to Read!</Button>
             </Typography>
             
           </Stack>
@@ -120,16 +125,18 @@ const RecorderPage = () => {
 
         <Recorder textValue={textAreaValue}/>
         </Container>
-      </Box>
+      
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                  sx={{ height: '100%', display: 'flex', flexDirection: 'column', background: "#324A5F"}}
+                  color = "neutral"
+
                 >
-                  <CardContent sx={{ flexGrow: 1 }}>
+                  <CardContent sx={{ flexGrow: 1, color: "#000000", background: "#ffff00" }}>
                     <Typography gutterBottom variant="h5" component="h2">
                       Word
                     </Typography>
@@ -137,25 +144,18 @@ const RecorderPage = () => {
                       Accuracy
                     </Typography>
                   </CardContent>
-                  <CardActions>
-                    <Button size="small">Listen</Button>
+                  <CardActions align="center">
+                    <Button  size="small">Listen</Button>
                   </CardActions>
                 </Card>
               </Grid>
             ))}
           </Grid>
         </Container>
+        </Box>
     </div>
-      <Box
-        sx={{
-          background: Colors.lightgreen,
-          pt: 8,
-          pb: 5,
-        }}
-      >
-        
-        
-      </Box>
+    
+      
       
     </main>
     

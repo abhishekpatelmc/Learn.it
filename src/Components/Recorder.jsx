@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import AudioAnalyser from "react-audio-analyser";
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import ProgressBar from "@ramonak/react-progress-bar";
-
+import Button from '@mui/material/Button';
 import './Recorder.css'
 import { storage } from '../utils/firebase';
 import pronounciationService from "../services/pronounciationService";
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+
 
 export default class Recorder extends Component {
   constructor(props) {
@@ -112,27 +115,33 @@ export default class Recorder extends Component {
       <div className="recorder-container">
         <AudioAnalyser {...audioProps}>
           <div className="btn-box">
-            <button
+          <Stack
+            direction="row"
+            spacing={2}
+            justifyContent="center">
+            <Button color="neutral" variant="contained"
               className="btn"
               onClick={() => this.controlAudio("recording")}
             >
               Start
-            </button>
-            <button className="btn" onClick={() => this.controlAudio("paused")}>
+            </Button>
+            <Button color="neutral" variant="contained" className="btn" onClick={() => this.controlAudio("paused")}>
               Pause
-            </button>
-            <button
+            </Button>
+            <Button color="neutral" variant="contained"
               className="btn"
               onClick={() => { this.controlAudio("inactive")}}
             >
               Stop
-            </button>
+            </Button>
+            </Stack>
           </div>
         </AudioAnalyser>
-        <div className="progress-wrapper">
+        <Container  align="center" className="progress-wrapper">
           <ProgressBar completed={this.state.progress} className="progress-bar"/>
-        </div> 
-        <button className="btn-primary" onClick={()=>{this.handleSubmit(this.state.fileName, this.state.text)}}>Submit</button>
+          <Button align = "center" color="neutral" variant="contained" className="btn-primary" onClick={()=>{this.handleSubmit(this.state.fileName, this.state.text)}}>Submit</Button>
+        </Container> 
+        
       </div>
     );
   }
