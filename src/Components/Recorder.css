@@ -1,6 +1,16 @@
 .progress-wrapper {
-  margin: 2rem;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
   width: 20rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-wrapper {
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 .recorder-container {
@@ -9,11 +19,11 @@
   flex-direction: column;
 }
 
-.btn-primary {
-  width: 10rem;
-  height: 2rem;
-}
-
 .progress-bar {
   width: 20rem;
+}
+
+.scoreCard {
+  display: flex;
+  flex-direction: column;
 }

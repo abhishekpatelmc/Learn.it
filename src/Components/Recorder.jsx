@@ -4,6 +4,8 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import ProgressBar from "@ramonak/react-progress-bar";
 import "./Recorder.css";
 import { storage } from "../utils/firebase";
+import Button from "@mui/material/Button";
+
 import pronounciationService from "../services/pronounciationService";
 import CardLayout from "./../Components/cardLayout";
 
@@ -148,25 +150,62 @@ export default class Recorder extends Component {
               className="progress-bar"
             />
           </div>
-          <button
-            className="btn-primary"
+          <Button
+            className="button-wrapper"
+            justifyContent="center"
+            variant="contained"
             onClick={() => {
               this.handleSubmit(this.state.fileName, this.state.text);
             }}
           >
             Submit
-          </button>
-
-          <h1>
-            {
-              this.state.resultData?.privPronJson?.PronunciationAssessment
-                ?.AccuracyScore
-            }
-          </h1>
+          </Button>
+          {/* <button
+            className="button-wrapper"
+            onClick={() => {
+              this.handleSubmit(this.state.fileName, this.state.text);
+            }}
+          >
+            Submit
+          </button> */}
+          {this.state.isRendered ? (
+            <div className="scoreCard">
+              <h3>
+                Accuracy:
+                {
+                  this.state.resultData?.privPronJson?.PronunciationAssessment
+                    ?.AccuracyScore
+                }
+              </h3>
+              <h3>
+                {" "}
+                Fluency Score:
+                {
+                  this.state.resultData?.privPronJson?.PronunciationAssessment
+                    ?.FluencyScore
+                }
+              </h3>
+              <h3>
+                {" "}
+                Completeness Score:
+                {
+                  this.state.resultData?.privPronJson?.PronunciationAssessment
+                    ?.CompletenessScore
+                }
+              </h3>
+              <h3>
+                Pronunciation Score :
+                {
+                  this.state.resultData?.privPronJson?.PronunciationAssessment
+                    ?.PronScore
+                }
+              </h3>
+            </div>
+          ) : null}
         </div>
-        {/* {this.state.isRendered ? (
+        {this.state.isRendered ? (
           <CardLayout result={this.state.resultData} />
-        ) : null} */}
+        ) : null}
       </div>
     );
   }

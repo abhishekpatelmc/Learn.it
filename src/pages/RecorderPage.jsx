@@ -51,7 +51,7 @@ const RecorderPage = () => {
       <CssBaseline />
       <AppBar position="relative" sx={{ background: Colors.black }}>
         <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
+          <Typography variant="h6" color="inherit" noWrap marginLeft={10}>
             LearnIt
           </Typography>
         </Toolbar>
@@ -92,7 +92,11 @@ const RecorderPage = () => {
                   >
                     1. Copy and paste a piece of text you would like to read or{" "}
                     <span> </span>
-                    <Button variant="contained" onClick={generateQuote}>
+                    <Button
+                      variant="contained"
+                      sx={{ m: 2 }}
+                      onClick={generateQuote}
+                    >
                       Generate something to Read!
                     </Button>
                   </Typography>
@@ -127,8 +131,8 @@ const RecorderPage = () => {
         <Box
           sx={{
             background: Colors.lightgreen,
-            pt: 8,
-            pb: 5,
+            pt: 1,
+            pb: 1,
           }}
         ></Box>
       </main>
