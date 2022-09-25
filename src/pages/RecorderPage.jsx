@@ -3,6 +3,7 @@ import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
 import TextField from '@mui/material/TextField';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
@@ -61,6 +62,12 @@ const RecorderPage = () => {
     <main>
       {/* Hero unit */}
       <div className="main">
+      <Box
+      sx={{
+        background: Colors.lightgreen,
+        pt: 8,
+        pb: 6,
+      }}>
       <Container maxWidth="sm">
             <Typography
               component="h3"
@@ -72,21 +79,48 @@ const RecorderPage = () => {
               Speak Here
             </Typography>
         <div className="textContainer">
-          <h2>1. Copy and paste a piece of text you would like to read or<span> </span>
+          <Stack
+          sx={{ pt: 4 }}
+          direction="row"
+          spacing={2}
+          justifyContent="center">
+          <Typography
+            component="h6"
+            variant="h6"
+            align="center"
+            color = "inherit"
+            gutterBottom>
+            1. Copy and paste a piece of text you would like to read or <span> </span>
             <Button  variant="contained" onClick={generateQuote}>Generate something to Read!</Button>
-          </h2>
+            </Typography>
+            
+          </Stack>
+         
           <TextField
             className='textArea' 
-            multiline
-            id="outlined-basic" label="Outlined" variant="outlined"
+            fullWidth
+            id="lastName"
+            label="Enter Text Here"
+            name="lastName"
+            multiline 
+            variant="outlined"
             value = {textAreaValue}
             onChange = {handleChange}
             
           />
         </div>
-        <h2>2. Hit the start button to record as you read through the paragraph.</h2>
+        <Typography
+            component="h6"
+            variant="h6"
+            align="center"
+            color = "inherit"
+            gutterBottom>
+              2. Hit the start button to record as you read through the paragraph.
+              </Typography>
+
         <Recorder textValue={textAreaValue}/>
         </Container>
+      </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
@@ -103,6 +137,9 @@ const RecorderPage = () => {
                       Accuracy
                     </Typography>
                   </CardContent>
+                  <CardActions>
+                    <Button size="small">Listen</Button>
+                  </CardActions>
                 </Card>
               </Grid>
             ))}
