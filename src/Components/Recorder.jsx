@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import AudioAnalyser from "react-audio-analyser";
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import ProgressBar from "@ramonak/react-progress-bar";
 
+import './Recorder.css'
 import { storage } from '../utils/firebase';
 
 export default class Recorder extends Component {
@@ -10,7 +12,10 @@ export default class Recorder extends Component {
     this.state = {
       status: "",
       submitVisible: false,
-      progress: 0
+      progress: 0,
+      audioType: "audio/wav",
+      text: this.props.textValue,
+      fileName: ""
     };
   }
 
@@ -32,10 +37,25 @@ export default class Recorder extends Component {
     });
   }
 
+  handleSubmit(fileName, text) {
+    if(!text) {
+      throw new Error('No text provided')
+    }
+
+    //JSON response is received here
+    console.log(fileName, text)
+    //const data = this.pronounciationService(fileName, text);
+
+  }
+
   uploadFile(file) {
     if(!file) return;
 
     const storageRef = ref(storage, `/audio/${file.size}`);
+
+    this.setState({
+      fileName: file.size
+    })
 
     const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -47,7 +67,7 @@ export default class Recorder extends Component {
     }, (err) => console.log(err),
       () => {
         getDownloadURL(uploadTask.snapshot.ref)
-        .then(url=> console.log(url))
+        .then(url => console.log(url))
       }
     )
   }
@@ -86,7 +106,7 @@ export default class Recorder extends Component {
       },
     };
     return (
-      <div>
+      <div className="recorder-container">
         <AudioAnalyser {...audioProps}>
           <div className="btn-box">
             <button
@@ -104,23 +124,12 @@ export default class Recorder extends Component {
             >
               Stop
             </button>
-            <button className="btn" onClick={() => console.log(AudioAnalyser)}>
-              Log
-            </button>
           </div>
         </AudioAnalyser>
-        <p>choose output type</p>
-        <select
-          name=""
-          id=""
-          onChange={(e) => this.changeScheme(e)}
-          value={audioType}
-        >
-          <option value="audio/wav">audio/wav（default）</option>
-          <option value="audio/webm">audio/webm</option>
-          <option value="audio/mp3">audio/mp3</option>
-        </select>
-        <h3>Uploaded {this.progress}</h3>
+        <div className="progress-wrapper">
+          <ProgressBar completed={this.state.progress} className="progress-bar"/>
+        </div> 
+        <button className="btn-primary" onClick={this.handleSubmit(this.state.fileName, this.state.text)}>Submit</button>
       </div>
     );
   }

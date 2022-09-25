@@ -1,0 +1,19 @@
+.progress-wrapper {
+  margin: 2rem;
+  width: 20rem;
+}
+
+.recorder-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.btn-primary {
+  width: 10rem;
+  height: 2rem;
+}
+
+.progress-bar {
+  width: 20rem;
+}
