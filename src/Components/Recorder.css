@@ -24,6 +24,6 @@
 }
 
 .scoreCard {
-  display: flex;
-  flex-direction: column;
+  font-size: 0.8rem;
+  margin-top: 1.5rem;
 }

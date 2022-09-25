@@ -187,36 +187,38 @@ export default class Recorder extends Component {
           </button> */}
           {this.state.isRendered ? (
             <div className="scoreCard">
-              <h3>
-                Accuracy:
-                {
-                  this.state.resultData?.privPronJson?.PronunciationAssessment
-                    ?.AccuracyScore
-                }
-              </h3>
-              <h3>
-                {" "}
-                Fluency Score:
-                {
-                  this.state.resultData?.privPronJson?.PronunciationAssessment
-                    ?.FluencyScore
-                }
-              </h3>
-              <h3>
-                {" "}
-                Completeness Score:
-                {
-                  this.state.resultData?.privPronJson?.PronunciationAssessment
-                    ?.CompletenessScore
-                }
-              </h3>
-              <h3>
-                Pronunciation Score :
-                {
-                  this.state.resultData?.privPronJson?.PronunciationAssessment
-                    ?.PronScore
-                }
-              </h3>
+              <Stack direction="row" spacing={2} justifyContent="center">
+                <h3>
+                  Accuracy:
+                  {
+                    this.state.resultData?.privPronJson?.PronunciationAssessment
+                      ?.AccuracyScore
+                  }
+                </h3>
+                <h3>
+                  {" "}
+                  Fluency Score:
+                  {
+                    this.state.resultData?.privPronJson?.PronunciationAssessment
+                      ?.FluencyScore
+                  }
+                </h3>
+                <h3>
+                  {" "}
+                  Completeness Score:
+                  {
+                    this.state.resultData?.privPronJson?.PronunciationAssessment
+                      ?.CompletenessScore
+                  }
+                </h3>
+                <h3>
+                  Pronunciation Score :
+                  {
+                    this.state.resultData?.privPronJson?.PronunciationAssessment
+                      ?.PronScore
+                  }
+                </h3>
+              </Stack>
             </div>
           ) : null}
         </div>

@@ -21,6 +21,15 @@ const theme = createTheme({
   status: {
     danger: "#e53e3e",
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 545,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
+    },
+  },
   palette: {
     primary: {
       main: "#0971f1",
